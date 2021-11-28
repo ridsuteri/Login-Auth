@@ -78,11 +78,11 @@ html, body{
   text-align: center;
 }
 
-/* .container .facebook a{
+.container .facebook a{
   background: linear-gradient( to right,  #3b5998 0%, #476bb8 100%);
   margin: 20px 0 50px 0;
 }
 .container .facebook a:hover{
   background: linear-gradient( to left,  #3b5998 0%, #476bb8 100%);
   margin: 20px 0 50px 0;
-} */
+}

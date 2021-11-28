@@ -38,7 +38,11 @@ app.get('/good', isLoggedIn, (req, res) =>{
     res.render("pages/profile",{name:req.user.displayName,pic:req.user.photos[0].value,email:req.user.emails[0].value})
 })
 
-// Auth Routes
+// app.get('/fb/good', isLoggedIn, (req, res) =>{
+//     res.render("pages/profile",{name:req.user.displayName,pic:profile.photos[0].value})
+// })
+
+// Auth Routes for google
 app.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/failed' }),
@@ -47,6 +51,16 @@ app.get('/google/callback', passport.authenticate('google', { failureRedirect: '
     res.redirect('/good');
   }
 );
+
+// Auth routes for fb
+app.get('/fb', passport.authenticate('facebook', { scope : 'email,user_photos' }));
+
+app.get('/fb/callback',
+  passport.authenticate('facebook', { failureRedirect: '/failed' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/good');
+  });
 
 app.get('/logout', (req, res) => {
     req.session = null;
