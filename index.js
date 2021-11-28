@@ -38,9 +38,6 @@ app.get('/good', isLoggedIn, (req, res) =>{
     res.render("pages/profile",{name:req.user.displayName,pic:req.user.photos[0].value,email:req.user.emails[0].value})
 })
 
-// app.get('/fb/good', isLoggedIn, (req, res) =>{
-//     res.render("pages/profile",{name:req.user.displayName,pic:profile.photos[0].value})
-// })
 
 // Auth Routes for google
 app.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
